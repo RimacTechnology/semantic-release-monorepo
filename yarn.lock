@@ -1456,7 +1456,6 @@ __metadata:
     package-up: "npm:^5.0.0"
     pinst: "npm:^3.0.0"
     prettier: "npm:^3.1.0"
-    read-package-up: "npm:^11.0.0"
     read-pkg: "npm:^9.0.1"
     semantic-release: "npm:^22.0.10"
     tsup: "npm:^8.0.1"
@@ -8203,17 +8202,6 @@ __metadata:
     normalize-package-data: "npm:^6.0.0"
     npm-normalize-package-bin: "npm:^3.0.0"
   checksum: b395d5330e9096cb533553e51c6dd123284a744e65c771fbd4d868ca600d2a61b867a4f10723e360608e839101fbe805448dd0079267b3232637ec8bb62bb080
-  languageName: node
-  linkType: hard
-
-"read-package-up@npm:^11.0.0":
-  version: 11.0.0
-  resolution: "read-package-up@npm:11.0.0"
-  dependencies:
-    find-up-simple: "npm:^1.0.0"
-    read-pkg: "npm:^9.0.0"
-    type-fest: "npm:^4.6.0"
-  checksum: 535b7554d47fae5fb5c2e7aceebd48b5de4142cdfe7b21f942fa9a0f56db03d3b53cce298e19438e1149292279c285e6ba6722eca741d590fd242519c4bdbc17
   languageName: node
   linkType: hard
 
