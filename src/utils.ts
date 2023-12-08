@@ -26,7 +26,7 @@ function getCommitsWithFiles(commits: readonly Commit[]): CommitWithFiles[] {
     return commits.map((commit) => {
         return {
             ...commit,
-            files: git(['diff-tree', '--root', '--no-commit-id', '-n', '-r', commit.hash]).split(EOL),
+            files: git(['diff-tree', '--root', '--no-commit-id', '--name-only', '-r', commit.hash]).split(EOL),
         }
     })
 }
@@ -38,7 +38,7 @@ function getPackagePath(): string {
         throw new Error('Unable to determine the package path')
     }
 
-    return relative(git(['rev-parse', '--show-toplevel']), resolve(packagePath, '...'))
+    return relative(git(['rev-parse', '--show-toplevel']), resolve(packagePath, '..'))
 }
 
 export function modifyContextReleaseVersion<TContextType extends ContextWithVersion>(context: TContextType): TContextType {
