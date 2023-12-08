@@ -1,0 +1,57 @@
+name: Bug Report
+description: Report a problem with `semantic-release-monorepo`
+labels: [bug]
+body:
+    - type: checkboxes
+      id: issue-prerequisite
+      attributes:
+          label: Issues
+          options:
+              - label:
+                    'I have checked [existing issues](https://github.com/RimacTechnology/semantic-release-monorepo/issues) and
+                    there are no issues with the same problem.'
+                required: true
+
+    - type: input
+      attributes:
+          label: '`semantic-release-monorepo` Version You Are Using'
+      validations:
+          required: true
+
+    - type: textarea
+      attributes:
+          label: 'Your Config'
+          description: 'Paste the config you are using with `semantic-release-monorepo` from semantic release config file'
+      validations:
+          required: true
+
+    - type: textarea
+      attributes:
+          label: 'Steps to reproduce'
+          description: 'A detailed step by step explanation on how to reproduce the problem.'
+      validations:
+          required: true
+
+    - type: textarea
+      attributes:
+          label: 'Expected behavior'
+          description: 'A description of the behavior you expected.'
+      validations:
+          required: true
+
+    - type: textarea
+      attributes:
+          label: 'Actual behavior'
+          description: 'A description of the actual behavior.'
+      validations:
+          required: true
+
+    - type: checkboxes
+      id: requirements-check
+      attributes:
+          label: Requirements
+          options:
+              - label:
+                    I have read and followed the instructions above and understand that my issue will be closed if I did not
+                    provide the required information.
+                required: true

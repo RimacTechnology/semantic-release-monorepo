@@ -1,0 +1,10 @@
+{
+    "useGitignore": true,
+    "cache": {
+        "useCache": true,
+        "cacheStrategy": "content",
+        "cacheLocation": "./.cspellcache"
+    },
+    "ignorePaths": ["CHANGELOG.md"],
+    "ignoreWords": ["rimac", "packagerc", "loglevel", "pinst", "commitlint", "conventionalcommits", "postpack", "tsup"]
+}

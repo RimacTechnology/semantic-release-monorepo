@@ -1,0 +1,23 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "display": "Default",
+    "compilerOptions": {
+        "alwaysStrict": true,
+        "declaration": false,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "lib": ["ES2023", "DOM", "DOM.ITERABLE"],
+        "moduleResolution": "node",
+        "forceConsistentCasingInFileNames": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "strictNullChecks": true,
+        "noUncheckedIndexedAccess": true,
+        "strict": true,
+        "outDir": "dist",
+        "target": "ES2022",
+        "module": "ESNext"
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules"]
+}
