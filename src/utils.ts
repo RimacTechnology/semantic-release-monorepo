@@ -66,10 +66,6 @@ export function modifyContextCommits<TContextType extends ContextWithCommits>(co
             })
         })
 
-        if (packageFile) {
-            context.logger.log(`Including commit "${commit.subject}" because it modified package file "${packageFile}"`)
-        }
-
         return Boolean(packageFile)
     })
 
