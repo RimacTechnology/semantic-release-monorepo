@@ -1,3 +1,10 @@
+## [1.0.0-alpha.3](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.0.0-alpha.2...v1.0.0-alpha.3) (2023-12-09)
+
+
+### Other
+
+* remove unnecessary logs ([a4f09e1](https://github.com/RimacTechnology/semantic-release-monorepo/commit/a4f09e1ee765959753e17a1200028f1b0794ead1))
+
 ## [1.0.0-alpha.2](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.0.0-alpha.1...v1.0.0-alpha.2) (2023-12-08)
 
 
