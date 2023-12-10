@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.0.1...v1.0.2) (2023-12-10)
+
+
+### Bug Fixes
+
+* set correct argument order when checking path relations ([ff9b007](https://github.com/RimacTechnology/semantic-release-monorepo/commit/ff9b007a46166e2977c07e4ea3a9fef47807a1d7))
+
 ## [1.0.1](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.0.0...v1.0.1) (2023-12-10)
 
 
