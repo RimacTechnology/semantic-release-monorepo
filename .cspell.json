@@ -6,5 +6,5 @@
         "cacheLocation": "./.cspellcache"
     },
     "ignorePaths": ["CHANGELOG.md"],
-    "ignoreWords": ["rimac", "packagerc", "loglevel", "pinst", "commitlint", "conventionalcommits", "postpack", "tsup"]
+    "ignoreWords": ["rimac", "packagerc", "loglevel", "pinst", "commitlint", "conventionalcommits", "postpack", "tsup", "memize"]
 }
