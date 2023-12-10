@@ -64,7 +64,7 @@ export function modifyContextCommits<TContextType extends ContextWithCommits>(co
     const commits = context.commits.filter((commit) => (
         memoizedGit(`diff-tree --root --no-commit-id --name-only -r ${commit.hash}`)
             .split(EOL)
-            .some((commitFilePath) => memoizedIsPathWithin(commitFilePath, packagePath))
+            .some((commitFilePath) => memoizedIsPathWithin(packagePath, commitFilePath))
     ))
 
     return {
