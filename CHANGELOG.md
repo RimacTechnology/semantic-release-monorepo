@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.0.0...v1.0.1) (2023-12-10)
+
+
+### Code Refactoring
+
+* cache output of git cmds and checks for file relations ([5dd030c](https://github.com/RimacTechnology/semantic-release-monorepo/commit/5dd030ceb24939b0a6f096be7e51514117ee2dc6))
+
 ## 1.0.0 (2023-12-09)
 
 
