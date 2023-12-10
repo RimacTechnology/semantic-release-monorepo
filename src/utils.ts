@@ -1,35 +1,40 @@
 import { execSync } from 'node:child_process'
 import { EOL } from 'node:os'
 import {
+    dirname,
+    extname,
     normalize,
     relative,
     resolve,
     sep,
 } from 'node:path'
 
+import memize from 'memize'
 import { packageUpSync } from 'package-up'
-import type { Commit } from 'semantic-release'
 
 import type {
-    CommitWithFiles,
     ContextWithCommits,
     ContextWithVersion,
 } from './utils.types'
 
-function git(args: string[]): string {
-    return execSync(['git', ...args].join(' '))
+const memoizedIsPathWithin = memize((path: string, childPath: string): boolean => {
+    const normalizedPath = normalize(path)
+    const normalizedChildPath = normalize(childPath)
+
+    const childSegmentPath = extname(normalizedChildPath) !== ''
+        ? dirname(normalizedChildPath).split(sep)
+        : normalizedChildPath.split(sep)
+
+    return normalizedPath.split(sep).every((pathSegment, index) => {
+        return pathSegment === childSegmentPath[index]
+    })
+})
+
+const memoizedGit = memize((args: string): string => {
+    return execSync(`git ${args}`)
         .toString()
         .trim()
-}
-
-function getCommitsWithFiles(commits: readonly Commit[]): CommitWithFiles[] {
-    return commits.map((commit) => {
-        return {
-            ...commit,
-            files: git(['diff-tree', '--root', '--no-commit-id', '--name-only', '-r', commit.hash]).split(EOL),
-        }
-    })
-}
+})
 
 function getPackagePath(): string {
     const packagePath = packageUpSync()
@@ -38,7 +43,7 @@ function getPackagePath(): string {
         throw new Error('Unable to determine the package path')
     }
 
-    return relative(git(['rev-parse', '--show-toplevel']), resolve(packagePath, '..'))
+    return relative(memoizedGit('rev-parse --show-toplevel'), resolve(packagePath, '..'))
 }
 
 export function modifyContextReleaseVersion<TContextType extends ContextWithVersion>(context: TContextType): TContextType {
@@ -55,19 +60,12 @@ export function modifyContextReleaseVersion<TContextType extends ContextWithVers
 
 export function modifyContextCommits<TContextType extends ContextWithCommits>(context: TContextType): TContextType {
     const packagePath = getPackagePath()
-    const packagePathSegments = packagePath.split(sep)
 
-    const commits = getCommitsWithFiles(context.commits).filter((commit) => {
-        const packageFile = commit.files.find((file) => {
-            const fileSegments = normalize(file).split(sep)
-
-            return packagePathSegments.every((packageSegment, index) => {
-                return packageSegment === fileSegments[index]
-            })
-        })
-
-        return Boolean(packageFile)
-    })
+    const commits = context.commits.filter((commit) => (
+        memoizedGit(`diff-tree --root --no-commit-id --name-only -r ${commit.hash}`)
+            .split(EOL)
+            .some((commitFilePath) => memoizedIsPathWithin(commitFilePath, packagePath))
+    ))
 
     return {
         ...context,
