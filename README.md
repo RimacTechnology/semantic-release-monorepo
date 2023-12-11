@@ -23,11 +23,15 @@ In the
 ```sh
 semantic-release-monorepo [options]
 ```
+
 For example:
+
 ```sh
 semantic-release-monorepo --extends @semantic-release/gitlab-config --dry-run
 ```
-ℹ️ As the [`allowUnknownFlags`](https://github.com/sindresorhus/meow#allowunknownflags) is enabled, all flags will be passed to internal `semantic-release` call as `options` argument.
+
+ℹ️ As the [`allowUnknownFlags`](https://github.com/sindresorhus/meow#allowunknownflags) is enabled, all flags will be passed to
+internal `semantic-release` call as `options` argument.
 
 ## Advanced
 
@@ -35,7 +39,7 @@ This library modifies the `context` object passed to `semantic-release` plugins 
 a monorepo.
 
 | Step             | Description                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `analyzeCommits` | Filters `context.commits` to only include the given monorepo package's commits.                                                                                                                                                                                                                                                                                                                                               |
 | `generateNotes`  | <ul><li>Filters `context.commits` to only include the given monorepo package's commits.</li><li>Modifies `context.nextRelease.version` to use the [monorepo git tag format](#how). The wrapped (default) `generateNotes` implementation uses this variable as the header for the release notes. Since all release notes end up in the same Git repository, using just the version as a header introduces ambiguity.</li></ul> |
 

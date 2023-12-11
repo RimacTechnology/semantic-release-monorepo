@@ -28,17 +28,7 @@ const cli = meow(`
     Examples
         $ semantic-release-monorepo --debug
 `, {
-    flags: {
-        ci: {
-            type: 'boolean',
-        },
-        debug: {
-            type: 'boolean',
-        },
-        dryRun: {
-            type: 'boolean',
-        },
-    },
+    flags: {},
     importMeta: import.meta,
 })
 
