@@ -1,17 +1,20 @@
 #!/usr/bin/env node
 
+import { createRequire } from 'node:module'
+
 import meow from 'meow'
 import { readPackage } from 'read-pkg'
 import type { Options } from 'semantic-release'
 import semanticRelease from 'semantic-release'
 import semanticGetConfig from 'semantic-release/lib/get-config.js'
-import { Signale } from 'signale'
 
 import { createInlinePlugin } from './createPlugin.js'
 import {
     RescopedStream,
     VoidStream,
 } from './stream.js'
+
+const { Signale } = createRequire(import.meta.url)('signale')
 
 const cli = meow(`
     Usage

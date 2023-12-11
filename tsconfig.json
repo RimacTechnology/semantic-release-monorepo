@@ -17,7 +17,7 @@
         "strict": true,
         "outDir": "dist",
         "target": "ES2022",
-        "module": "ESNext"
+        "module": "Node16"
     },
     "include": ["src/**/*.ts", "semantic-release.d.ts"],
     "exclude": ["node_modules"]
