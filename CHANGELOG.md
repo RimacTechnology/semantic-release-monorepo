@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.1.2...v1.1.3) (2023-12-11)
+
+
+### Bug Fixes
+
+* return `Object` in publish plugin step ([cc5c9b6](https://github.com/RimacTechnology/semantic-release-monorepo/commit/cc5c9b67322ff104df5973f42731813da1c9b111))
+
 ## [1.1.2](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.1.1...v1.1.2) (2023-12-11)
 
 
