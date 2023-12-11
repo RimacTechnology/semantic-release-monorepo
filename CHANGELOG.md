@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.1.1...v1.1.2) (2023-12-11)
+
+
+### Bug Fixes
+
+* use package name as the log scope in semantic-release instead of workspace name ([46f2256](https://github.com/RimacTechnology/semantic-release-monorepo/commit/46f225656e2dc8d7baa865ab5453615339baa497))
+
 ## [1.1.1](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.1.0...v1.1.1) (2023-12-11)
 
 
