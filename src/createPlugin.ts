@@ -26,7 +26,9 @@ export function createInlinePlugin(semanticConfig: SemanticConfigType) {
     }
 
     const publish = async (_: Config, context: PublishContext) => {
-        return semanticConfig.plugins.publish(modifyContextCommits(context))
+        const [response] = await semanticConfig.plugins.publish(modifyContextCommits(context))
+
+        return response ?? {}
     }
 
     const inlinePlugin = {
