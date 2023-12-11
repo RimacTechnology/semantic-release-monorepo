@@ -7,17 +7,18 @@
         "skipLibCheck": true,
         "esModuleInterop": true,
         "lib": ["ES2023", "DOM", "DOM.ITERABLE"],
-        "moduleResolution": "node",
+        "moduleResolution": "node16",
         "forceConsistentCasingInFileNames": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "strictNullChecks": true,
         "noUncheckedIndexedAccess": true,
+        "resolveJsonModule": true,
         "strict": true,
         "outDir": "dist",
         "target": "ES2022",
-        "module": "ESNext"
+        "module": "Node16"
     },
-    "include": ["src/**/*.ts"],
+    "include": ["src/**/*.ts", "semantic-release.d.ts"],
     "exclude": ["node_modules"]
 }
