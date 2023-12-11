@@ -1,3 +1,14 @@
+## [1.1.0-alpha.1](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.0.2...v1.1.0-alpha.1) (2023-12-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* usage only via CLI
+
+### Features
+
+* implementation of cli wrapper around semantic release ([09fccda](https://github.com/RimacTechnology/semantic-release-monorepo/commit/09fccda14a616d051abb8a67cd843ec0a0384e47))
+
 ## [1.0.2](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.0.1...v1.0.2) (2023-12-10)
 
 
