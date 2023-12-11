@@ -1,3 +1,10 @@
+## [1.1.0-alpha.2](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.1.0-alpha.1...v1.1.0-alpha.2) (2023-12-11)
+
+
+### Bug Fixes
+
+* require `signale` package as its not ESM compatible library ([81400b3](https://github.com/RimacTechnology/semantic-release-monorepo/commit/81400b3397f6b18beda589f922dba67dae6a431c))
+
 ## [1.1.0-alpha.1](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.0.2...v1.1.0-alpha.1) (2023-12-11)
 
 
