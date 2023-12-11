@@ -8,6 +8,8 @@ import type { Options } from 'semantic-release'
 import semanticRelease from 'semantic-release'
 import semanticGetConfig from 'semantic-release/lib/get-config.js'
 
+import { name } from '../package.json'
+
 import { createInlinePlugin } from './createPlugin.js'
 import {
     RescopedStream,
@@ -58,13 +60,13 @@ async function main(flags = cli.flags) {
         await semanticRelease({ ...options, ...inlinePlugin }, {
             cwd: monoContext.cwd,
             env: monoContext.env,
-            stderr: new RescopedStream(monoContext.stderr, monoPackage.name),
-            stdout: new RescopedStream(monoContext.stdout, monoPackage.name),
+            stderr: new RescopedStream(monoContext.stderr, name),
+            stdout: new RescopedStream(monoContext.stdout, name),
         })
 
         process.exit(0)
     } catch (error) {
-        console.error('[semantic-release-monorepo]:', error)
+        console.error(`[${name}]:`, error)
         process.exit(1)
     }
 }
