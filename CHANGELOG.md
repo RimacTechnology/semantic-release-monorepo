@@ -1,3 +1,12 @@
+## [1.1.1](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.1.0...v1.1.1) (2023-12-11)
+
+
+### Bug Fixes
+
+* inject correct workspace version on publish step ([fd6a1f2](https://github.com/RimacTechnology/semantic-release-monorepo/commit/fd6a1f2b2ce2ca4cd67ebe31bfcb5f4f3a6b62b3))
+* pass full `monoContext` so that the `getSemanticConfig` doesnt error our ([f382929](https://github.com/RimacTechnology/semantic-release-monorepo/commit/f38292924c5fc6c13bdbb3d87f5bb079e0a32ea9))
+* remove all flags to prevent setting default like `dry-run to true/false ([bfa2a85](https://github.com/RimacTechnology/semantic-release-monorepo/commit/bfa2a851454442d78c4e0eb551e38926b6c88f32))
+
 ## [1.1.0](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.0.2...v1.1.0) (2023-12-11)
 
 
