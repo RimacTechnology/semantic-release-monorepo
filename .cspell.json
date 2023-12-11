@@ -6,5 +6,19 @@
         "cacheLocation": "./.cspellcache"
     },
     "ignorePaths": ["CHANGELOG.md"],
-    "ignoreWords": ["rimac", "packagerc", "loglevel", "pinst", "commitlint", "conventionalcommits", "postpack", "tsup", "memize"]
+    "ignoreWords": [
+        "rimac",
+        "packagerc",
+        "loglevel",
+        "pinst",
+        "commitlint",
+        "conventionalcommits",
+        "postpack",
+        "tsup",
+        "memize",
+        "signale",
+        "Signale",
+        "Rescoped",
+        "rescoped"
+    ]
 }

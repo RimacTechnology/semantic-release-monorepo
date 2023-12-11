@@ -15,7 +15,7 @@ import { packageUpSync } from 'package-up'
 import type {
     ContextWithCommits,
     ContextWithVersion,
-} from './utils.types'
+} from './utils.types.js'
 
 const memoizedIsPathWithin = memize((path: string, childPath: string): boolean => {
     const normalizedPath = normalize(path)

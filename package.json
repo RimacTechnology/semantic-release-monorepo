@@ -11,7 +11,8 @@
     "license": "MIT",
     "author": "Rimac Technology d.o.o.",
     "type": "module",
-    "main": "dist/index.js",
+    "main": "dist/cli.js",
+    "bin": "dist/cli.js",
     "files": [
         "dist"
     ],
@@ -32,7 +33,19 @@
     "commitlint": {
         "extends": [
             "@commitlint/config-conventional"
-        ]
+        ],
+        "rules": {
+            "header-max-length": [
+                2,
+                "always",
+                500
+            ],
+            "body-max-line-length": [
+                2,
+                "always",
+                500
+            ]
+        }
     },
     "config": {
         "commitizen": {
@@ -41,8 +54,10 @@
     },
     "dependencies": {
         "memize": "^2.1.0",
+        "meow": "^12.1.1",
         "package-up": "^5.0.0",
-        "read-pkg": "^9.0.1"
+        "read-pkg": "^9.0.1",
+        "signale": "^1.4.0"
     },
     "devDependencies": {
         "@commitlint/cli": "^18.4.3",
@@ -55,6 +70,7 @@
         "@semantic-release/npm": "^11.0.2",
         "@semantic-release/release-notes-generator": "^12.1.0",
         "@types/node": "^20.10.4",
+        "@types/signale": "^1.4.7",
         "commitizen": "^4.3.0",
         "conventional-changelog-conventionalcommits": "^7.0.2",
         "cspell": "^8.1.3",
