@@ -1,9 +1,9 @@
 import type {
     AnalyzeCommitsContext,
     Config,
+    GenerateNotesContext,
     PrepareContext,
-    SuccessContext,
-    VerifyReleaseContext,
+    PublishContext,
 } from 'semantic-release'
 import type { SemanticConfigType } from 'semantic-release/lib/get-config.js'
 
@@ -17,23 +17,23 @@ export function createInlinePlugin(semanticConfig: SemanticConfigType) {
         return semanticConfig.plugins.analyzeCommits(modifyContextCommits(context))
     }
 
-    const generateNotes = async (_: Config, context: VerifyReleaseContext) => {
+    const generateNotes = async (_: Config, context: GenerateNotesContext) => {
         return semanticConfig.plugins.generateNotes(modifyContextCommits(modifyContextReleaseVersion(context)))
     }
 
     const prepare = async (_: Config, context: PrepareContext) => {
-        return semanticConfig.plugins.prepare(modifyContextCommits(modifyContextReleaseVersion(context)))
+        return semanticConfig.plugins.prepare(modifyContextCommits(context))
     }
 
-    const success = async (_: Config, context: SuccessContext) => {
-        return semanticConfig.plugins.success(modifyContextCommits(modifyContextReleaseVersion(context)))
+    const publish = async (_: Config, context: PublishContext) => {
+        return semanticConfig.plugins.publish(modifyContextCommits(context))
     }
 
     const inlinePlugin = {
         analyzeCommits,
         generateNotes,
         prepare,
-        success,
+        publish,
     }
 
     Object.values(inlinePlugin).forEach((value) =>
