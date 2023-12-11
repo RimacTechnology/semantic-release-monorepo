@@ -59,8 +59,7 @@ async function main(flags = cli.flags) {
         }
 
         const semanticConfig = await semanticGetConfig({
-            cwd: monoContext.cwd,
-            env: monoContext.env,
+            ...monoContext,
             logger: new Signale({ stream: new VoidStream(1) }),
         }, options)
 
