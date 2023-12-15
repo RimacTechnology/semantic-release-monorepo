@@ -2,8 +2,8 @@
     "useGitignore": true,
     "cache": {
         "useCache": true,
-        "cacheStrategy": "content",
-        "cacheLocation": "./.cspellcache"
+        "cacheLocation": "node_modules/.cache/cspell/.cspellcache",
+        "cacheStrategy": "content"
     },
     "ignorePaths": ["CHANGELOG.md"],
     "ignoreWords": [

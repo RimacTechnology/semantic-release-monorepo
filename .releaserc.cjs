@@ -18,12 +18,12 @@ module.exports = {
                 preset: 'angular',
                 releaseRules: [
                     {
-                        type: 'refactor',
                         release: 'patch',
+                        type: 'refactor',
                     },
                     {
-                        type: 'chore',
                         release: 'patch',
+                        type: 'chore',
                     },
                 ],
             },
@@ -35,31 +35,31 @@ module.exports = {
                 presetConfig: {
                     types: [
                         {
-                            type: 'feat',
                             section: 'Features',
+                            type: 'feat',
                         },
                         {
-                            type: 'fix',
                             section: 'Bug Fixes',
+                            type: 'fix',
                         },
                         {
-                            type: 'refactor',
                             section: 'Code Refactoring',
+                            type: 'refactor',
                         },
                         {
-                            type: 'chore',
                             section: 'Other',
+                            type: 'chore',
                         },
                         {
-                            type: 'perf',
                             section: 'Performance Improvements',
+                            type: 'perf',
                         },
                         {
-                            type: 'revert',
                             section: 'Reverts',
+                            type: 'revert',
                         },
                     ],
-                }
+                },
             },
         ],
         '@semantic-release/changelog',

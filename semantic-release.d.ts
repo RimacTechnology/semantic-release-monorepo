@@ -18,9 +18,9 @@ declare module 'semantic-release/lib/get-config.js' {
             addChannel(context: AddChannelContext): Promise<unknown>
             analyzeCommits(context: AnalyzeCommitsContext): Promise<unknown>
             fail(context: FailContext): Promise<unknown>
-            generateNotes(context: GenerateNotesContext): Promise<unknown>
+            generateNotes(context: GenerateNotesContext): Promise<string>
             prepare(context: PrepareContext): Promise<unknown>
-            publish(context: PublishContext): Promise<unknown>
+            publish(context: PublishContext): Promise<unknown[]>
             success(context: SuccessContext): Promise<unknown>
             verifyConditions(context: VerifyConditionsContext): Promise<unknown>
         }
