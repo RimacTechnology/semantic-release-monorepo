@@ -2,6 +2,7 @@
 
 import { createRequire } from 'node:module'
 
+import { cosmiconfig } from 'cosmiconfig'
 import meow from 'meow'
 import { readPackage } from 'read-pkg'
 import type { Options } from 'semantic-release'
@@ -37,10 +38,12 @@ const cli = meow(`
 async function main(flags = cli.flags) {
     try {
         const monoPackage = await readPackage()
+        const rawSemanticConfig = await cosmiconfig('release').search()
 
         const options: Options = {
-            ...flags,
             tagFormat: `${monoPackage.name}@\${version}`,
+            ...flags,
+            ...rawSemanticConfig?.config,
         }
 
         const monoContext = {
