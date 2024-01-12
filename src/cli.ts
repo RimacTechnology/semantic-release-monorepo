@@ -42,8 +42,8 @@ async function main(flags = cli.flags) {
 
         const options: Options = {
             tagFormat: `${monoPackage.name}@\${version}`,
-            ...flags,
             ...rawSemanticConfig?.config,
+            ...flags,
         }
 
         const monoContext = {
