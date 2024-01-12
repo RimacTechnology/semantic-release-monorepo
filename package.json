@@ -2,12 +2,17 @@
     "name": "@rimac-technology/semantic-release-monorepo",
     "version": "1.1.5",
     "description": "Enhanced semantic-release by enabling simplified and automatic package publishing in multi-package repositories",
+    "homepage": "https://github.com/RimacTechnology/semantic-release-monorepo#readme",
     "keywords": [
         "release",
         "semantic-release",
-        "monorepo"
+        "monorepo",
+        "workspace"
     ],
     "repository": "git@github.com:RimacTechnology/semantic-release-monorepo.git",
+    "bugs": {
+        "url": "https://github.com/RimacTechnology/semantic-release-monorepo/issues"
+    },
     "license": "MIT",
     "author": "Rimac Technology d.o.o.",
     "type": "module",
