@@ -1,6 +1,6 @@
 {
     "name": "@rimac-technology/semantic-release-monorepo",
-    "version": "1.1.5",
+    "version": "1.1.6",
     "description": "Enhanced semantic-release by enabling simplified and automatic package publishing in multi-package repositories",
     "keywords": [
         "release",

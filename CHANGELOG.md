@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.1.5...v1.1.6) (2024-01-12)
+
+
+### Code Refactoring
+
+* cli argument should override `.releaserc` options ([866ec64](https://github.com/RimacTechnology/semantic-release-monorepo/commit/866ec643e971cfdad6bf45231cfb64824a6e300d))
+
 ## [1.1.5](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.1.4...v1.1.5) (2024-01-12)
 
 
