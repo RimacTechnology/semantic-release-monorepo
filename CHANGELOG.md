@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.1.4...v1.1.5) (2024-01-12)
+
+
+### Bug Fixes
+
+* add options to override default injected `tagFormat` ([abf2b52](https://github.com/RimacTechnology/semantic-release-monorepo/commit/abf2b52d513281be48e97369cd3b5799ff0610f6))
+
 ## [1.1.4](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.1.3...v1.1.4) (2024-01-10)
 
 
