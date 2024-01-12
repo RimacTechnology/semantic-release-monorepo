@@ -45,6 +45,9 @@ a monorepo.
 
 ### tagFormat
 
-Pre-configures the
-[`tagFormat` option](https://github.com/semantic-release/semantic-release/blob/caribou/docs/usage/configuration.md#tagformat) to
-use the [monorepo git tag format](#how).
+To prevent version conflicts, git tags are created with a namespace that incorporates the name of the package, such as
+`my-package-name@1.0.1`. To change this default setting, specify a
+[tagFormat](https://github.com/semantic-release/semantic-release/blob/caribou/docs/usage/configuration.md#tagformat) key in the
+`.releaserc`.
+
+**Remember**, it's essential to choose a format that ensures each workspace/release is unique.
