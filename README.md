@@ -1,39 +1,54 @@
-# @rimac-technology/semantic-release-monorepo
-
-This project is a TypeScript-based fork of the original
-[semantic-release-monorepo](https://github.com/pmowrer/semantic-release-monorepo). It enhances the original project by
-incorporating TypeScript for stronger type safety, updated dependencies, a simplified codebase, and support for ECMAScript Modules
-(ESM).
+# TypeScript Enhanced Semantic-Release-Monorepo
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Conventional Changelog](https://img.shields.io/badge/changelog-conventional-brightgreen.svg)](http://conventional-changelog.github.io)
 [![semantic-release: angular](https://img.shields.io/badge/semantic--release-conventionalcommits-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
-## Install
+## Overview
 
-Both `semantic-release` and `semantic-release-monorepo` must be accessible in each monorepo package.
+This project is a TypeScript-enhanced version of the original
+[semantic-release-monorepo](https://github.com/pmowrer/semantic-release-monorepo). It leverages TypeScript for improved type
+safety and includes updates to dependencies, codebase simplification, and support for ECMAScript Modules (ESM).
 
-```bash
-yarn add --dev @rimac-technology/semantic-release-monorepo
+## Installation
+
+Ensure both `semantic-release` and `semantic-release-monorepo` are accessible in each package of your monorepo.
+
+Install the package as a development dependency using yarn:
+
+```shell
+  yarn add --dev @rimac-technology/semantic-release-monorepo
 ```
 
-In the
-[release config](https://github.com/semantic-release/semantic-release/blob/master/docs/usage/configuration.md#configuration-file):
+or npm:
 
-```sh
-semantic-release-monorepo [options]
+```shell
+npm install --dev @rimac-technology/semantic-release-monorepo
 ```
 
-For example:
+## Configuration
 
-```sh
+It is designed to integrate seamlessly with your current semantic-release workflow. Simply replace instances where you call the
+semantic-release CLI command with semantic-release-monorepo. For example, in your package.json's release script:
+
+```json
+{
+    "scripts": {
+        "release": "semantic-release-monorepo"
+    }
+}
+```
+
+Or, when using it in the CLI:
+
+```shell
 semantic-release-monorepo --extends @semantic-release/gitlab-config --dry-run
 ```
 
-ℹ️ As the [`allowUnknownFlags`](https://github.com/sindresorhus/meow#allowunknownflags) is enabled, all flags will be passed to
+ℹ️ As the [allowUnknownFlags](https://github.com/sindresorhus/meow#allowunknownflags) is enabled, all flags will be passed to
 internal `semantic-release` call as `options` argument.
 
-## Advanced
+## How it works
 
 This library modifies the `context` object passed to `semantic-release` plugins in the following way to make them compatible with
 a monorepo.
@@ -49,4 +64,4 @@ To prevent version conflicts, git tags are created with a namespace that incorpo
 `my-package-name@1.0.1`. To change this default setting, specify a
 [tagFormat](https://semantic-release.gitbook.io/semantic-release/usage/configuration#tagformat) key in the `.releaserc`.
 
-**Remember**, it's essential to choose a format that ensures each workspace/release is unique.
+⚠️ **Remember**, it's essential to choose a format that ensures each workspace/release is unique.
