@@ -47,6 +47,9 @@ jobs:
               with:
                   name: dist
                   path: dist/
+            - run: yarn install
+              env:
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
             - run: yarn release
               env:
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
