@@ -1,3 +1,10 @@
+## [1.1.8](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.1.7...v1.1.8) (2024-03-06)
+
+
+### Other
+
+* update dependencies and `yarn` to latest version ([5fb6b2c](https://github.com/RimacTechnology/semantic-release-monorepo/commit/5fb6b2cbbbc5ad4801c0acce345986fc1391bfb7))
+
 ## [1.1.7](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.1.6...v1.1.7) (2024-02-01)
 
 
