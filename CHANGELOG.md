@@ -1,3 +1,9 @@
+## [1.1.9](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.1.8...v1.1.9) (2024-06-12)
+
+### Other
+
+* update dependencies ([b45195b](https://github.com/RimacTechnology/semantic-release-monorepo/commit/b45195b5c5f8e19a5fb7bf53f02f2403899f400a))
+
 ## [1.1.8](https://github.com/RimacTechnology/semantic-release-monorepo/compare/v1.1.7...v1.1.8) (2024-03-06)
 
 
