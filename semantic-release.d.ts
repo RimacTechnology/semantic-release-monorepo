@@ -26,8 +26,8 @@ declare module 'semantic-release/lib/get-config.js' {
         }
     }
 
-    export default async function(
+    export default function (
         context: Config & Pick<BaseContext, 'logger'>,
-        options: Options
+        options: Options,
     ): Promise<SemanticConfigType>
 }

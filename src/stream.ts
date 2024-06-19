@@ -30,4 +30,3 @@ export class RescopedStream extends WriteStream {
         return true
     }
 }
-

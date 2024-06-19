@@ -17,3 +17,6 @@ dist
 
 # MacOS
 **/.DS_Store
+
+# Turbo
+.turbo
