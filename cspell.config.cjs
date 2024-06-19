@@ -1,0 +1,27 @@
+module.exports = {
+    useGitignore: true,
+    cache: {
+        useCache: true,
+        cacheLocation: 'node_modules/.cache/cspell/.cspellcache',
+        cacheStrategy: 'content',
+    },
+    ignorePaths: ['CHANGELOG.md'],
+    ignoreWords: [
+        'rimac',
+        'packagerc',
+        'loglevel',
+        'pinst',
+        'commitlint',
+        'conventionalcommits',
+        'postpack',
+        'tsup',
+        'memize',
+        'signale',
+        'Signale',
+        'Rescoped',
+        'rescoped',
+        'releaserc',
+        'biomejs',
+        'filenaming',
+    ],
+}

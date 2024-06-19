@@ -7,10 +7,7 @@ import type {
 } from 'semantic-release'
 import type { SemanticConfigType } from 'semantic-release/lib/get-config.js'
 
-import {
-    modifyContextCommits,
-    modifyContextReleaseVersion,
-} from './utils.js'
+import { modifyContextCommits, modifyContextReleaseVersion } from './utils.js'
 
 export function createInlinePlugin(semanticConfig: SemanticConfigType) {
     const analyzeCommits = async (_: Config, context: AnalyzeCommitsContext) => {
@@ -38,12 +35,13 @@ export function createInlinePlugin(semanticConfig: SemanticConfigType) {
         publish,
     }
 
-    Object.values(inlinePlugin).forEach((value) =>
+    for (const value of Object.values(inlinePlugin)) {
         Reflect.defineProperty(value, 'pluginName', {
             enumerable: true,
             value: '@rimac-technology/monorepo-inline-plugin',
             writable: false,
-        }))
+        })
+    }
 
     return inlinePlugin
 }

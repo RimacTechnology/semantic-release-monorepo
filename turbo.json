@@ -1,0 +1,16 @@
+{
+    "$schema": "https://turbo.build/schema.json",
+    "tasks": {
+        "build:ts": {
+            "inputs": ["src/**", "tsup.config.ts"],
+            "outputs": ["dist/**"]
+        },
+        "lint:all": {
+            "dependsOn": ["lint:ts", "lint:cspell"]
+        },
+        "format:all": {
+            "dependsOn": ["format:ts"],
+            "cache": false
+        }
+    }
+}

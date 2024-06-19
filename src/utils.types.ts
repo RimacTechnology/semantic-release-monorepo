@@ -1,8 +1,4 @@
-import type {
-    BaseContext,
-    Commit,
-    NextRelease,
-} from 'semantic-release'
+import type { BaseContext, Commit, NextRelease } from 'semantic-release'
 
 export interface ContextWithCommits extends BaseContext {
     /**
