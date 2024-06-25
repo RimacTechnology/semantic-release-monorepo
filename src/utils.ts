@@ -41,7 +41,6 @@ export function modifyContextReleaseVersion<TContextType extends ContextWithVers
         nextRelease: {
             ...context.nextRelease,
             // @ts-expect-error
-            // eslint-disable-next-line no-template-curly-in-string -- Semantic release template
             version: context.options.tagFormat.replace('${version}', context.nextRelease.version),
         },
     }
