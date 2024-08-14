@@ -23,11 +23,11 @@ const memoizedGit = memize((args: string): string => {
     return execSync(`git ${args}`).toString().trim()
 })
 
-function getPackagePath(): string {
+function getPackagePath(): string | null {
     const packagePath = packageUpSync()
 
     if (!packagePath) {
-        throw new Error('Unable to determine the package path')
+        return null
     }
 
     return relative(memoizedGit('rev-parse --show-toplevel'), resolve(packagePath, '..'))
