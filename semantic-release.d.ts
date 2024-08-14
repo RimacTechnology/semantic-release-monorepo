@@ -12,8 +12,12 @@ declare module 'semantic-release/lib/get-config.js' {
         SuccessContext,
         VerifyConditionsContext,
     } from 'semantic-release'
+    import type { CommitWithFilePaths } from './src/utils.types'
 
     export type SemanticConfigType = {
+        options: {
+            processCommits?(commits: CommitWithFilePaths): CommitWithFilePaths[]
+        }
         plugins: {
             addChannel(context: AddChannelContext): Promise<unknown>
             analyzeCommits(context: AnalyzeCommitsContext): Promise<unknown>

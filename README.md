@@ -65,3 +65,55 @@ To prevent version conflicts, git tags are created with a namespace that incorpo
 [tagFormat](https://semantic-release.gitbook.io/semantic-release/usage/configuration#tagformat) key in the `.releaserc`.
 
 ⚠️ **Remember**, it's essential to choose a format that ensures each workspace/release is unique.
+
+## Custom Release Logic with processCommits
+
+The `.releaserc` configuration allows an optional `processCommits` function, which allows you to define custom logic to determine if a release should be triggered based on a specific set of commits.
+
+This function receives a single argument of type `CommitWithFilePaths`. The `CommitWithFilePaths` interface extends the regular commit data by adding a `filePaths` array that lists all file paths changed in the commit. Using this data, you can decide whether the changes affect your releasable packages and trigger a release accordingly.
+
+#### Example Usage
+
+For example, if you're using Yarn as your package manager, you can retrieve all workspaces in your monorepo with:
+
+```bash
+yarn workspaces list --json
+```
+
+Within the `processCommits` function,
+you can match the changed file paths against the paths of these workspaces
+to determine if any dependencies of your releasable package have been modified.
+Based on this analysis, you can choose which commits should trigger a release
+
+Here’s how you might define this in your `.releaserc`:
+
+```javascript
+export default {
+    branches: ['main'],
+    plugins: ['@semantic-release/commit-analyzer', '@semantic-release/release-notes-generator'],
+    processCommits(commitsWithFilePaths) {
+        const packageJson = readPackageSync() // if using read-pkg npm package
+        const dependencies = [...Object.keys(packageJson.dependencies), ...Object.keys(packageJson.devDependencies)]
+    
+        const workspaces = execSync('yarn workspaces list --json').toString().trim().split(EOL)
+            .filter((workspace) => Boolean(workspace))
+            .map((workspace) => JSON.parse(workspace))
+
+        const affectedCommits = []
+
+        for (const workspace of workspaces) {
+            if (!dependencies.includes(workspace.name)) {
+                continue
+            }
+
+            affectedCommits.push(...commitsWithFilePaths.filter((commitWithFilePath) =>
+                commitWithFilePath.filePaths.some((filePath) => filePath.startsWith(workspace.location)),
+            ))
+        }
+
+        return affectedCommits
+  },
+}
+
+```
+

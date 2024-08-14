@@ -4,8 +4,9 @@ import { dirname, extname, normalize, relative, resolve, sep } from 'node:path'
 
 import memize from 'memize'
 import { packageUpSync } from 'package-up'
+import type { SemanticConfigType } from 'semantic-release/lib/get-config.js'
 
-import type { ContextWithCommits, ContextWithVersion } from './utils.types.js'
+import type { CommitWithFilePaths, ContextWithCommits, ContextWithVersion } from './utils.types.js'
 
 const memoizedIsPathWithin = memize((path: string, childPath: string): boolean => {
     const normalizedPath = normalize(path)
@@ -46,17 +47,49 @@ export function modifyContextReleaseVersion<TContextType extends ContextWithVers
     }
 }
 
-export function modifyContextCommits<TContextType extends ContextWithCommits>(context: TContextType): TContextType {
+export function modifyContextCommits<TContextType extends ContextWithCommits>(
+    context: TContextType,
+    semanticConfig: SemanticConfigType,
+): TContextType {
     const packagePath = getPackagePath()
 
-    const commits = context.commits.filter((commit) =>
-        memoizedGit(`diff-tree --root --no-commit-id --name-only -r ${commit.hash}`)
-            .split(EOL)
-            .some((commitFilePath) => memoizedIsPathWithin(packagePath, commitFilePath)),
-    )
+    if (!packagePath && !semanticConfig.options.processCommits) {
+        return context
+    }
+
+    const commitsWithFilePaths = context.commits.map((commit) => {
+        return {
+            ...commit,
+            filePaths: memoizedGit(`diff-tree --root --no-commit-id --name-only -r ${commit.hash}`).split(EOL),
+        }
+    })
+
+    const affectedCommits: CommitWithFilePaths[] = []
+
+    if (packagePath) {
+        affectedCommits.push(
+            ...commitsWithFilePaths.filter((commitWithFilePaths) => {
+                return commitWithFilePaths.filePaths.some((commitFilePath) => {
+                    return memoizedIsPathWithin(packagePath, commitFilePath)
+                })
+            }),
+        )
+    }
+
+    if (semanticConfig.options.processCommits) {
+        affectedCommits.push(
+            ...semanticConfig.options.processCommits(
+                commitsWithFilePaths.filter((commitWithFilePaths) => {
+                    return !affectedCommits.some((affectedCommit) => {
+                        return commitWithFilePaths.hash === affectedCommit.hash
+                    })
+                }),
+            ),
+        )
+    }
 
     return {
         ...context,
-        commits,
+        commits: affectedCommits,
     }
 }
