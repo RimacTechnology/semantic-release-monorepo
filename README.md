@@ -55,8 +55,13 @@ a monorepo.
 
 | Step             | Description                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `analyzeCommits` | Filters `context.commits` to only include the given monorepo package's commits.                                                                                                                                                                                                                                                                                                                                               |
+| `analyzeCommits` | Filters context.commits to only include the given monorepo package's commits. Additionally, it checks whether any workspace that has been modified in the commits is listed as a dependency, devDependency, or peerDependency of the current workspace, and includes those commits as well.                                                                                                                                                                                                                                                                                                                                               |
 | `generateNotes`  | <ul><li>Filters `context.commits` to only include the given monorepo package's commits.</li><li>Modifies `context.nextRelease.version` to use the [monorepo git tag format](#how). The wrapped (default) `generateNotes` implementation uses this variable as the header for the release notes. Since all release notes end up in the same Git repository, using just the version as a header introduces ambiguity.</li></ul> |
+
+In more detail, this library runs the npm query .workspaces command to retrieve a list of all `package.json` files across the workspaces in the monorepo.
+It then checks if any commits from the last release have modified any workspace listed as a dependency, devDependency, or peerDependency for the current workspace.
+
+If such modifications are found, those commits are included in the list of commits for the dependent workspace, even if the workspace itself was not directly changed.
 
 ### tagFormat
 
@@ -68,52 +73,46 @@ To prevent version conflicts, git tags are created with a namespace that incorpo
 
 ## Custom Release Logic with processCommits
 
-The `.releaserc` configuration allows an optional `processCommits` function, which allows you to define custom logic to determine if a release should be triggered based on a specific set of commits.
+The `.releaserc` configuration allows an optional `processCommits` function, enabling you to define custom logic to include additional commits based on specific requirements.
+This function provides flexibility for more advanced use cases where the default commit filtering behavior doesn't cover your needs.
 
-This function receives a single argument of type `CommitWithFilePaths`. The `CommitWithFilePaths` interface extends the regular commit data by adding a `filePaths` array that lists all file paths changed in the commit. Using this data, you can decide whether the changes affect your releasable packages and trigger a release accordingly.
+### How it Works
 
-#### Example Usage
+The `processCommits` function receives an array of `CommitWithFilePaths` objects.
+Each object contains the usual commit data, plus a `filePaths` array listing all the file paths changed in the commit.
+You can use this information to add custom conditions for determining whether certain commits should trigger a release.
 
-For example, if you're using Yarn as your package manager, you can retrieve all workspaces in your monorepo with:
+For example, you may want to include specific commits based on custom file path patterns, metadata in commit messages, or some external conditions.
 
-```bash
-yarn workspaces list --json
-```
+### Example Use Case
 
-Within the `processCommits` function,
-you can match the changed file paths against the paths of these workspaces
-to determine if any dependencies of your releasable package have been modified.
-Based on this analysis, you can choose which commits should trigger a release
+Imagine you have a monorepo and want to trigger a release not only when relevant files are changed but also based on specific commit messages or tags that are used for triggering feature-specific releases.
 
-Here’s how you might define this in your `.releaserc`:
+In the following example, the `processCommits` function will include additional commits if they contain a specific tag in the commit message, such as `[release:docs]`, to force a release for documentation updates:
 
 ```javascript
 export default {
     branches: ['main'],
-    plugins: ['@semantic-release/commit-analyzer', '@semantic-release/release-notes-generator'],
+    plugins: [
+        '@semantic-release/commit-analyzer', 
+        '@semantic-release/release-notes-generator'
+    ],
     processCommits(commitsWithFilePaths) {
-        const packageJson = readPackageSync() // if using read-pkg npm package
-        const dependencies = [...Object.keys(packageJson.dependencies), ...Object.keys(packageJson.devDependencies)]
-    
-        const workspaces = execSync('yarn workspaces list --json').toString().trim().split(EOL)
-            .filter((workspace) => Boolean(workspace))
-            .map((workspace) => JSON.parse(workspace))
+        const customTriggerCommits = commitsWithFilePaths.filter((commit) => {
+            // Include commits with a specific tag in the message for custom releases
+            return commit.message.includes('[release:docs]') || 
+                   commit.message.includes('[release:hotfix]');
+        });
 
-        const affectedCommits = []
+        // You can also perform additional checks based on file paths or other conditions
+        const filePathFilteredCommits = commitsWithFilePaths.filter((commitWithFilePath) => {
+            return commitWithFilePath.filePaths.some((filePath) =>
+                filePath.startsWith('docs/') || filePath.startsWith('hotfix/')
+            );
+        });
 
-        for (const workspace of workspaces) {
-            if (!dependencies.includes(workspace.name)) {
-                continue
-            }
-
-            affectedCommits.push(...commitsWithFilePaths.filter((commitWithFilePath) =>
-                commitWithFilePath.filePaths.some((filePath) => filePath.startsWith(workspace.location)),
-            ))
-        }
-
-        return affectedCommits
-  },
+        // Combine custom-triggered commits with those affected by file paths
+        return [...customTriggerCommits, ...filePathFilteredCommits];
+    },
 }
-
 ```
-
