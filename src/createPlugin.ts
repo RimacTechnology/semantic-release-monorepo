@@ -12,21 +12,23 @@ import { modifyContextCommits, modifyContextReleaseVersion } from './utils.js'
 export function createInlinePlugin(semanticConfig: SemanticConfigType) {
     // biome-ignore lint/suspicious/useAwait: semantic-release expect steps to return Promise
     const analyzeCommits = async (_: Config, context: AnalyzeCommitsContext) => {
-        return semanticConfig.plugins.analyzeCommits(modifyContextCommits(context))
+        return semanticConfig.plugins.analyzeCommits(modifyContextCommits(context, semanticConfig))
     }
 
     // biome-ignore lint/suspicious/useAwait: semantic-release expect steps to return Promise
     const generateNotes = async (_: Config, context: GenerateNotesContext) => {
-        return semanticConfig.plugins.generateNotes(modifyContextCommits(modifyContextReleaseVersion(context)))
+        return semanticConfig.plugins.generateNotes(
+            modifyContextCommits(modifyContextReleaseVersion(context), semanticConfig),
+        )
     }
 
     // biome-ignore lint/suspicious/useAwait: semantic-release expect steps to return Promise
     const prepare = async (_: Config, context: PrepareContext) => {
-        return semanticConfig.plugins.prepare(modifyContextCommits(context))
+        return semanticConfig.plugins.prepare(modifyContextCommits(context, semanticConfig))
     }
 
     const publish = async (_: Config, context: PublishContext) => {
-        const [response] = await semanticConfig.plugins.publish(modifyContextCommits(context))
+        const [response] = await semanticConfig.plugins.publish(modifyContextCommits(context, semanticConfig))
 
         return response ?? {}
     }
