@@ -37,11 +37,11 @@ const cli = meow(
 
 async function main(flags = cli.flags) {
     try {
-        const monoPackage = await readPackage()
+        const monoPackage = await readPackage().catch(() => null)
         const rawSemanticConfig = await cosmiconfig('release').search()
 
         const options: Options = {
-            tagFormat: `${monoPackage.name}@\${version}`,
+            tagFormat: monoPackage ? `${monoPackage.name}@\${version}` : undefined,
             ...rawSemanticConfig?.config,
             ...flags,
         }
