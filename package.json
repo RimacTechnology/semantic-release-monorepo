@@ -2,7 +2,12 @@
     "name": "@rimac-technology/semantic-release-monorepo",
     "version": "1.2.2",
     "description": "Enhanced semantic-release by enabling simplified and automatic package publishing in multi-package repositories",
-    "keywords": ["release", "semantic-release", "monorepo", "workspace"],
+    "keywords": [
+        "release",
+        "semantic-release",
+        "monorepo",
+        "workspace"
+    ],
     "homepage": "https://github.com/RimacTechnology/semantic-release-monorepo#readme",
     "bugs": {
         "url": "https://github.com/RimacTechnology/semantic-release-monorepo/issues"
@@ -13,7 +18,9 @@
     "type": "module",
     "main": "dist/cli.js",
     "bin": "dist/cli.js",
-    "files": ["dist"],
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "build": "turbo run build:all",
         "build:ts": "tsup --config tsup.config.ts",
@@ -29,10 +36,20 @@
         "release": "semantic-release"
     },
     "commitlint": {
-        "extends": ["@commitlint/config-conventional"],
+        "extends": [
+            "@commitlint/config-conventional"
+        ],
         "rules": {
-            "header-max-length": [2, "always", 500],
-            "body-max-line-length": [2, "always", 500]
+            "header-max-length": [
+                2,
+                "always",
+                500
+            ],
+            "body-max-line-length": [
+                2,
+                "always",
+                500
+            ]
         }
     },
     "config": {
@@ -53,19 +70,19 @@
         "@commitlint/config-conventional": "^19.5.0",
         "@semantic-release/commit-analyzer": "^13.0.0",
         "@semantic-release/git": "^10.0.1",
-        "@semantic-release/github": "^11.0.0",
+        "@semantic-release/github": "^11.0.1",
         "@semantic-release/npm": "^12.0.1",
         "@semantic-release/release-notes-generator": "^14.0.1",
-        "@types/node": "^20.16.13",
+        "@types/node": "^20.17.6",
         "@types/signale": "^1.4.7",
         "commitizen": "^4.3.1",
         "conventional-changelog-conventionalcommits": "^8.0.0",
-        "cspell": "^8.15.4",
+        "cspell": "^8.16.0",
         "husky": "^9.1.6",
         "pinst": "^3.0.0",
-        "semantic-release": "^24.1.3",
-        "tsup": "^8.3.0",
-        "turbo": "^2.2.1",
+        "semantic-release": "^24.2.0",
+        "tsup": "^8.3.5",
+        "turbo": "^2.2.3",
         "typescript": "^5.6.3"
     },
     "peerDependencies": {
