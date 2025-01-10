@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     useGitignore: true,
     cache: {
         useCache: true,

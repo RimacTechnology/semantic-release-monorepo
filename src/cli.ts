@@ -9,7 +9,7 @@ import type { Options } from 'semantic-release'
 import semanticRelease from 'semantic-release'
 import semanticGetConfig from 'semantic-release/lib/get-config.js'
 
-import { name } from '../package.json'
+import pkg from '../package.json' with { type: 'json' }
 
 import { createInlinePlugin } from './createPlugin.js'
 import { RescopedStream, VoidStream } from './stream.js'
@@ -35,49 +35,45 @@ const cli = meow(
     },
 )
 
-async function main(flags = cli.flags) {
-    try {
-        const monoPackage = await readPackage().catch(() => null)
-        const rawSemanticConfig = await cosmiconfig('release').search()
+try {
+    const monoPackage = await readPackage().catch(() => null)
+    const rawSemanticConfig = await cosmiconfig('release').search()
 
-        const options: Options = {
-            tagFormat: monoPackage ? `${monoPackage.name}@\${version}` : undefined,
-            ...rawSemanticConfig?.config,
-            ...flags,
-        }
-
-        const monoContext = {
-            cwd: process.cwd(),
-            env: process.env,
-            stderr: process.stderr,
-            stdout: process.stdout,
-        }
-
-        const semanticConfig = await semanticGetConfig(
-            {
-                ...monoContext,
-                logger: new Signale({ stream: new VoidStream(1) }),
-            },
-            options,
-        )
-
-        const inlinePlugin = createInlinePlugin(semanticConfig)
-
-        await semanticRelease(
-            { ...options, ...inlinePlugin },
-            {
-                cwd: monoContext.cwd,
-                env: monoContext.env,
-                stderr: new RescopedStream(monoContext.stderr, name),
-                stdout: new RescopedStream(monoContext.stdout, name),
-            },
-        )
-
-        process.exit(0)
-    } catch (error) {
-        console.error(`[${name}]:`, error)
-        process.exit(1)
+    const options: Options = {
+        tagFormat: monoPackage ? `${monoPackage.name}@\${version}` : undefined,
+        ...rawSemanticConfig?.config,
+        ...cli.flags,
     }
-}
 
-void main()
+    const monoContext = {
+        cwd: process.cwd(),
+        env: process.env,
+        stderr: process.stderr,
+        stdout: process.stdout,
+    }
+
+    const semanticConfig = await semanticGetConfig(
+        {
+            ...monoContext,
+            logger: new Signale({ stream: new VoidStream(1) }),
+        },
+        options,
+    )
+
+    const inlinePlugin = createInlinePlugin(semanticConfig)
+
+    await semanticRelease(
+        { ...options, ...inlinePlugin },
+        {
+            cwd: monoContext.cwd,
+            env: monoContext.env,
+            stderr: new RescopedStream(monoContext.stderr, pkg.name),
+            stdout: new RescopedStream(monoContext.stdout, pkg.name),
+        },
+    )
+
+    process.exit(0)
+} catch (error) {
+    console.error(`[${pkg.name}]:`, error)
+    process.exit(1)
+}

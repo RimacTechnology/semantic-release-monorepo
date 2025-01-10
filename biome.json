@@ -2,7 +2,7 @@
     "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
     "formatter": {
         "enabled": true,
-        "formatWithErrors": false,
+        "formatWithErrors": true,
         "attributePosition": "auto",
         "indentStyle": "space",
         "indentWidth": 4,
