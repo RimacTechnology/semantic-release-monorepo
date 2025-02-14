@@ -1577,7 +1577,7 @@ __metadata:
     "@semantic-release/github": "npm:^11.0.1"
     "@semantic-release/npm": "npm:^12.0.1"
     "@semantic-release/release-notes-generator": "npm:^14.0.3"
-    "@types/node": "npm:^22.13.1"
+    "@types/node": "npm:^22.13.4"
     "@types/signale": "npm:^1.4.7"
     commitizen: "npm:^4.3.1"
     conventional-changelog-conventionalcommits: "npm:^8.0.0"
@@ -1588,10 +1588,10 @@ __metadata:
     meow: "npm:^13.2.0"
     pinst: "npm:^3.0.0"
     read-pkg: "npm:^9.0.1"
-    semantic-release: "npm:^24.2.1"
+    semantic-release: "npm:^24.2.2"
     signale: "npm:^1.4.0"
     tsup: "npm:^8.3.6"
-    turbo: "npm:^2.4.0"
+    turbo: "npm:^2.4.2"
     typescript: "npm:^5.7.3"
   peerDependencies:
     semantic-release: ">=20"
@@ -2081,12 +2081,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^22.13.1":
-  version: 22.13.1
-  resolution: "@types/node@npm:22.13.1"
+"@types/node@npm:^22.13.4":
+  version: 22.13.4
+  resolution: "@types/node@npm:22.13.4"
   dependencies:
     undici-types: "npm:~6.20.0"
-  checksum: 10/d8ba7068b0445643c0fa6e4917cdb7a90e8756a9daff8c8a332689cd5b2eaa01e4cd07de42e3cd7e6a6f465eeda803d5a1363d00b5ab3f6cea7950350a159497
+  checksum: 10/716e05b1b84d9da3b2cbba9f642d7294549a89c85d27148b48815f321e0081d0546366e97d11c7710a3280160828512eb945f4e9361dda980f708473758ac0a7
   languageName: node
   linkType: hard
 
@@ -6678,9 +6678,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semantic-release@npm:^24.2.1":
-  version: 24.2.1
-  resolution: "semantic-release@npm:24.2.1"
+"semantic-release@npm:^24.2.2":
+  version: 24.2.2
+  resolution: "semantic-release@npm:24.2.2"
   dependencies:
     "@semantic-release/commit-analyzer": "npm:^13.0.0-beta.1"
     "@semantic-release/error": "npm:^4.0.0"
@@ -6713,7 +6713,7 @@ __metadata:
     yargs: "npm:^17.5.1"
   bin:
     semantic-release: bin/semantic-release.js
-  checksum: 10/6fe86670e37455443f9e9189c83a99772bc9b0ee88fd42160733d9f3816bb02cb5043beb6ad9af6179595373abf49ec065a2f261fea5b9fd20a37711f5dfece4
+  checksum: 10/543e0be294e59172a58ceff2f9f1a29968304af55ebc92f9e59d1e0da36d64b094fe12e469eb3c1c6ab6bb5d698624876093f78aa17702169b2770cbad029e21
   languageName: node
   linkType: hard
 
@@ -7403,58 +7403,58 @@ __metadata:
   languageName: node
   linkType: hard
 
-"turbo-darwin-64@npm:2.4.0":
-  version: 2.4.0
-  resolution: "turbo-darwin-64@npm:2.4.0"
+"turbo-darwin-64@npm:2.4.2":
+  version: 2.4.2
+  resolution: "turbo-darwin-64@npm:2.4.2"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-darwin-arm64@npm:2.4.0":
-  version: 2.4.0
-  resolution: "turbo-darwin-arm64@npm:2.4.0"
+"turbo-darwin-arm64@npm:2.4.2":
+  version: 2.4.2
+  resolution: "turbo-darwin-arm64@npm:2.4.2"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-linux-64@npm:2.4.0":
-  version: 2.4.0
-  resolution: "turbo-linux-64@npm:2.4.0"
+"turbo-linux-64@npm:2.4.2":
+  version: 2.4.2
+  resolution: "turbo-linux-64@npm:2.4.2"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-linux-arm64@npm:2.4.0":
-  version: 2.4.0
-  resolution: "turbo-linux-arm64@npm:2.4.0"
+"turbo-linux-arm64@npm:2.4.2":
+  version: 2.4.2
+  resolution: "turbo-linux-arm64@npm:2.4.2"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-windows-64@npm:2.4.0":
-  version: 2.4.0
-  resolution: "turbo-windows-64@npm:2.4.0"
+"turbo-windows-64@npm:2.4.2":
+  version: 2.4.2
+  resolution: "turbo-windows-64@npm:2.4.2"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-windows-arm64@npm:2.4.0":
-  version: 2.4.0
-  resolution: "turbo-windows-arm64@npm:2.4.0"
+"turbo-windows-arm64@npm:2.4.2":
+  version: 2.4.2
+  resolution: "turbo-windows-arm64@npm:2.4.2"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "turbo@npm:2.4.0"
+"turbo@npm:^2.4.2":
+  version: 2.4.2
+  resolution: "turbo@npm:2.4.2"
   dependencies:
-    turbo-darwin-64: "npm:2.4.0"
-    turbo-darwin-arm64: "npm:2.4.0"
-    turbo-linux-64: "npm:2.4.0"
-    turbo-linux-arm64: "npm:2.4.0"
-    turbo-windows-64: "npm:2.4.0"
-    turbo-windows-arm64: "npm:2.4.0"
+    turbo-darwin-64: "npm:2.4.2"
+    turbo-darwin-arm64: "npm:2.4.2"
+    turbo-linux-64: "npm:2.4.2"
+    turbo-linux-arm64: "npm:2.4.2"
+    turbo-windows-64: "npm:2.4.2"
+    turbo-windows-arm64: "npm:2.4.2"
   dependenciesMeta:
     turbo-darwin-64:
       optional: true
@@ -7470,7 +7470,7 @@ __metadata:
       optional: true
   bin:
     turbo: bin/turbo
-  checksum: 10/074e612c5258132e52d1aeed3152178c6f8b2a8c77625ec734b5eb71a77ab123639446404b6c9ea126a382594359e4a095c4fafa860c2bc451dbec8846cebdab
+  checksum: 10/31f0d3a6f1453afebbd1b38ac8080b9b846662452c8312ab98e382249b3e4b978535cba9437e3966802ce55992064f44d4632a62eb85ceec1fa46a1a2bf9d1e0
   languageName: node
   linkType: hard
 
